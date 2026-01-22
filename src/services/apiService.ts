@@ -1,8 +1,8 @@
-import { PublicClientApplication } from '@azure/msal-browser';
+import { IPublicClientApplication } from '@azure/msal-browser';
 import { apiConfig } from '../config/authConfig';
 
 export class ApiService {
-  constructor(private msalInstance: PublicClientApplication) {}
+  constructor(private msalInstance: IPublicClientApplication) {}
 
   /**
    * Acquire access token silently or with redirect
@@ -56,7 +56,7 @@ export class ApiService {
   /**
    * Generic POST request
    */
-  async post<T>(endpoint: string, data: any): Promise<T> {
+  async post<T, D = Record<string, unknown>>(endpoint: string, data: D): Promise<T> {
     const token = await this.getAccessToken();
     
     const response = await fetch(`${apiConfig.baseUrl}${endpoint}`, {
@@ -78,7 +78,7 @@ export class ApiService {
   /**
    * Generic PATCH request
    */
-  async patch<T>(endpoint: string, data: any): Promise<T> {
+  async patch<T, D = Record<string, unknown>>(endpoint: string, data: D): Promise<T> {
     const token = await this.getAccessToken();
     
     const response = await fetch(`${apiConfig.baseUrl}${endpoint}`, {

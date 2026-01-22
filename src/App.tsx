@@ -1,6 +1,6 @@
 import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import { SignInButton } from './components/Auth/SignInButton';
-import { SignOutButton } from './components/Auth/SignOutButton';
+import { SignOutButton } from './components/Auth/SignOutButton'
 import { UserProfile } from './components/Auth/UserProfile';
 import { ProtectedRoute } from './components/Auth/ProtectedRoute';
 import { ApiService } from './services/apiService';
@@ -9,14 +9,14 @@ import { useEffect, useState } from 'react';
 function App() {
   const isAuthenticated = useIsAuthenticated();
   const { instance } = useMsal();
-  const [apiData, setApiData] = useState<any>(null);
+  const [apiData, setApiData] = useState<Record<string, unknown> | null>(null);
 
   useEffect(() => {
     if (isAuthenticated) {
       // Test API call
       const api = new ApiService(instance);
       api.get('/tasks/me')
-        .then(data => setApiData(data))
+        .then(data => setApiData(data as Record<string, unknown>))
         .catch(error => console.error('API call failed:', error));
     }
   }, [isAuthenticated, instance]);
