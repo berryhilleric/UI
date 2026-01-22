@@ -43,7 +43,6 @@ publish/
 .env
 .env.local
 .env.development
-.env.production
 
 # IDE Specific Files
 *.sublime-workspace
