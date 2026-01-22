@@ -22,3 +22,29 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Build and Output Directories
+bin/
+obj/
+publish/
+
+# User-Specific Files
+*.user
+*.sln.ide
+*.sln.user
+*.userprefs
+
+# Temporary Files
+*.tmp
+*.temp
+*.cache
+
+# Environment Files
+.env
+.env.local
+.env.development
+.env.production
+
+# IDE Specific Files
+*.sublime-workspace
+*.sublime-project
