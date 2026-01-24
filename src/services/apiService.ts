@@ -114,4 +114,33 @@ export class ApiService {
       throw new Error(`API Error: ${response.status} ${response.statusText}`);
     }
   }
+
+  /**
+   * Get all products
+   */
+  async getProducts(): Promise<Product[]> {
+    return this.get<Product[]>('/api/products');
+  }
+
+  /**
+   * Get a product by ID
+   */
+  async getProduct(id: string): Promise<Product> {
+    return this.get<Product>(`/api/products/${id}`);
+  }
+
+  /**
+   * Create a new product
+   */
+  async createProduct(product: Omit<Product, 'id'>): Promise<Product> {
+    return this.post<Product, Omit<Product, 'id'>>('/api/products', product);
+  }
+}
+
+// Product interface
+export interface Product {
+  id: string;
+  userId: number;
+  name: string;
+  price: number;
 }
