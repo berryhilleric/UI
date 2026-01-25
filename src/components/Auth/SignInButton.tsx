@@ -16,6 +16,7 @@ export const SignInButton = () => {
   return (
     <button 
       onClick={handleLogin}
+      className="w-20 bg-blue-600 text-white font-medium  border-blue-700 hover:bg-blue-700"
     >
       Sign In
     </button>

@@ -13,7 +13,7 @@ export const Cart: React.FC<CartProps> = ({ cartItems, onCheckout }) => {
     return (
       <aside>
         <h2>Shopping Cart</h2>
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ width: '48px', height: '48px', margin: '0 auto', display: 'block' }}>
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12 mx-auto">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"

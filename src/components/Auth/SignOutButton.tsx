@@ -17,6 +17,7 @@ export const SignOutButton = () => {
   return (
     <button 
       onClick={handleLogout}
+      className="w-20 bg-red-600 text-white font-medium  border-red-700 hover:bg-red-700"
     >
       Sign Out
     </button>

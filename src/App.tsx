@@ -1,14 +1,14 @@
-import { useIsAuthenticated } from '@azure/msal-react';
+//import { useIsAuthenticated } from '@azure/msal-react';
 import { SignInButton } from './components/Auth/SignInButton';
 import { SignOutButton } from './components/Auth/SignOutButton'
-import { UserProfile } from './components/Auth/UserProfile';
+//import { UserProfile } from './components/Auth/UserProfile';
 import { ProtectedRoute } from './components/Auth/ProtectedRoute';
 import { ProductList, CartItem } from './components/ProductList';
 import { Cart } from './components/Cart';
 import { useState } from 'react';
 
 function App() {
-  const isAuthenticated = useIsAuthenticated();
+  //const isAuthenticated = useIsAuthenticated();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const handleCartUpdate = (cart: CartItem[]) => {

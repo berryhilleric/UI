@@ -104,32 +104,35 @@ export const ProductList: React.FC<ProductListProps> = ({ onCartUpdate }) => {
   return (
     <section>
       <h2>Available Products</h2>
-      {products.map((product) => {
-        const quantityInCart = getProductQuantityInCart(product.id);
-        
-        return (
-          <article key={product.id}>
-            <h3>{product.name}</h3>
-            <p>${product.price.toFixed(2)}</p>
-        <div>
-              {quantityInCart === 0 ? (
-                <button onClick={() => addToCart(product)}>
-                  Add to Cart
-                </button>
-              ) : (
-                <>
-                  <button onClick={() => removeFromCart(product.id)}>−</button>
-                  <span>{quantityInCart}</span>
-                  <button onClick={() => addToCart(product)}>+</button>
-                </>
+      <div className="grid grid-cols-3 gap-4 mx-auto">
+        {products.map((product) => {
+          const quantityInCart = getProductQuantityInCart(product.id);
+          
+          return (
+            <article className="text-center" key={product.id}>
+              <h3>{product.name}</h3>
+              <p>${product.price.toFixed(2)}</p>
+              <div>
+                {quantityInCart === 0 ? (
+                  <button onClick={() => addToCart(product)}
+                  className="bg-blue-500 text-white  hover:bg-blue-600 active:bg-blue-700 cursor-pointer">
+                    Add to Cart
+                  </button>
+                ) : (
+                  <>
+                    <button onClick={() => removeFromCart(product.id)}>−</button>
+                    <span>{quantityInCart}</span>
+                    <button onClick={() => addToCart(product)}>+</button>
+                  </>
+                )}
+              </div>
+              {quantityInCart > 0 && (
+                <p>Subtotal: ${(product.price * quantityInCart).toFixed(2)}</p>
               )}
-            </div>
-            {quantityInCart > 0 && (
-              <p>Subtotal: ${(product.price * quantityInCart).toFixed(2)}</p>
-            )}
-          </article>
-        );
-      })}
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 };
