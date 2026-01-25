@@ -41,14 +41,16 @@ function App() {
 
       <main>
         <ProtectedRoute fallback={
-          <section>
-            <h2>Welcome to Our Store</h2>
+          <section className="flex items-center justify-center flex-col min-h-screen">
+            <h2 className='text-xl'>Welcome to Our Store</h2>
             <p>Sign in to browse our products and start shopping</p>
             <SignInButton />
           </section>
         }>
-          <SignOutButton />
-          <Cart cartItems={cartItems} onCheckout={handleCheckout} />
+          <div className="flex justify-end">
+            <Cart cartItems={cartItems} onCheckout={handleCheckout} />
+            <SignOutButton />
+          </div>
           <ProductList onCartUpdate={handleCartUpdate} />
           
         </ProtectedRoute>

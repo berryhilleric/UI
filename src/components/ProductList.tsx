@@ -103,13 +103,13 @@ export const ProductList: React.FC<ProductListProps> = ({ onCartUpdate }) => {
 
   return (
     <section>
-      <h2>Available Products</h2>
-      <div className="grid grid-cols-3 gap-4 mx-auto">
+      <h2 className='text-center text-4xl'>Available Products</h2>
+      <div className="grid grid-cols-3 gap-4 mx-auto place-items-center">
         {products.map((product) => {
           const quantityInCart = getProductQuantityInCart(product.id);
           
           return (
-            <article className="text-center" key={product.id}>
+            <article  key={product.id}>
               <h3>{product.name}</h3>
               <p>${product.price.toFixed(2)}</p>
               <div>
