@@ -27,18 +27,6 @@ function App() {
 
   return (
     <>
-      {/* <nav>
-        <h1>Product Store</h1>
-        {isAuthenticated ? (
-          <>
-            <UserProfile />
-            <SignOutButton />
-          </>
-        ) : (
-          <SignInButton />
-        )}
-      </nav> */}
-
       <main>
         <ProtectedRoute fallback={
           <section className="flex items-center justify-center flex-col min-h-screen">
