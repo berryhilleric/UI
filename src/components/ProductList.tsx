@@ -109,7 +109,19 @@ export const ProductList: React.FC<ProductListProps> = ({ onCartUpdate }) => {
           const quantityInCart = getProductQuantityInCart(product.id);
           
           return (
-            <article  key={product.id}>
+            <article key={product.id} className="flex flex-col">
+              {product.imageUrl && (
+                <img 
+                  src={product.imageUrl} 
+                  alt={product.name}
+                  className="w-full h-48 object-cover rounded-t-lg"
+                />
+              )}
+              {!product.imageUrl && (
+                <div className="w-full h-48 bg-gray-200 flex items-center justify-center rounded-t-lg">
+                  <span className="text-gray-500">No image</span>
+                </div>
+              )}
               <h3>{product.name}</h3>
               <p>${product.price.toFixed(2)}</p>
               <div>

@@ -135,6 +135,30 @@ export class ApiService {
   async createProduct(product: Omit<Product, 'id'>): Promise<Product> {
     return this.post<Product, Omit<Product, 'id'>>('/api/products', product);
   }
+
+  /**
+   * Upload image for a product
+   */
+  async uploadProductImage(productId: string, imageFile: File): Promise<{ imageUrl: string }> {
+    const token = await this.getAccessToken();
+    
+    const formData = new FormData();
+    formData.append('image', imageFile);
+
+    const response = await fetch(`${apiConfig.baseUrl}/api/products/${productId}/image`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error(`API Error: ${response.status} ${response.statusText}`);
+    }
+
+    return response.json();
+  }
 }
 
 // Product interface
@@ -143,4 +167,5 @@ export interface Product {
   userId: number;
   name: string;
   price: number;
+  imageUrl?: string;
 }
