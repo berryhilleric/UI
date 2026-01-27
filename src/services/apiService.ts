@@ -119,21 +119,21 @@ export class ApiService {
    * Get all products
    */
   async getProducts(): Promise<Product[]> {
-    return this.get<Product[]>('/api/products-ef');
+    return this.get<Product[]>('/api/products');
   }
 
   /**
    * Get a product by ID
    */
   async getProduct(id: string): Promise<Product> {
-    return this.get<Product>(`/api/products-ef/${id}`);
+    return this.get<Product>(`/api/products/${id}`);
   }
 
   /**
    * Create a new product
    */
   async createProduct(product: Omit<Product, 'id'>): Promise<Product> {
-    return this.post<Product, Omit<Product, 'id'>>('/api/products-ef', product);
+    return this.post<Product, Omit<Product, 'id'>>('/api/products', product);
   }
 
   /**
@@ -145,7 +145,7 @@ export class ApiService {
     const formData = new FormData();
     formData.append('image', imageFile);
 
-    const response = await fetch(`${apiConfig.baseUrl}/api/products-ef/${productId}/image`, {
+    const response = await fetch(`${apiConfig.baseUrl}/api/products/${productId}/image`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
