@@ -79,8 +79,8 @@ export const ProductList: React.FC<ProductListProps> = ({ onCartUpdate }) => {
 
   if (loading) {
     return (
-      <div>
-        <div>Loading...</div>
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
       </div>
     );
   }
@@ -102,9 +102,9 @@ export const ProductList: React.FC<ProductListProps> = ({ onCartUpdate }) => {
   }
 
   return (
-    <section>
+    <section className='bg-slate-800 text-white'>
       <h2 className='text-center text-4xl'>Available Products</h2>
-      <div className="grid grid-cols-3 gap-4 mx-auto place-items-center">
+      <div className="grid grid-cols-3 gap-4 mx-auto my-auto place-items-center">
         {products.map((product) => {
           const quantityInCart = getProductQuantityInCart(product.id);
           

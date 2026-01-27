@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <main>
+      <main className="bg-slate-800 text-white">
         <ProtectedRoute fallback={
           <section className="flex items-center justify-center flex-col min-h-screen">
             <h2 className='text-xl'>Welcome to Our Store</h2>
